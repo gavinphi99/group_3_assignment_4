@@ -26,6 +26,7 @@ class Virus {
   }
   
   void display() {
+    ellipseMode(CENTER);
     noStroke();
     fill(c);
     ellipse(pos.x, pos.y, r*2, r*2);

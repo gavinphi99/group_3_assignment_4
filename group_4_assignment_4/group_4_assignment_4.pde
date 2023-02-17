@@ -29,8 +29,8 @@ void setup() {
     float y0 = random(height);
     PVector pos = new PVector(x0, y0);
     float r = random(15, 45);
-    float vx0 = random(-1.5, 1.5);
-    float vy0 = random(-1.5, 1.5);
+    float vx0 = random(-1.25, 1.25);
+    float vy0 = random(-1.25, 1.25);
     PVector vbar = new PVector(vx0, vy0);
     color c = color(random(255), random(255), random(255));
     
@@ -53,9 +53,9 @@ void draw() {
   
   //draw viruses
   for (int j = 0; j < numViruses; j++) {
+    viruses.get(j).move();
     viruses.get(j).display();
-    //viruses.get(j).move();
-    //spikes.get(j).move();
+    spikes.get(j).move();
     spikes.get(j).display();
     antibodies.get(j).move();
     antibodies.get(j).rotate_tri();
