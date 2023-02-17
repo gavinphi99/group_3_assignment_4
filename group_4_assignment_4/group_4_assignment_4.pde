@@ -1,7 +1,12 @@
+//viruses declaration
 ArrayList<Virus> viruses;
 ArrayList<Spikes> spikes;
 ArrayList<Antibodies> antibodies;
 int numViruses;
+//ellipse cells declaration
+EllipseCell testCell;
+Nucleus testNucleus;
+color cellColor1 = color(185,228,255,150);
 
 void setup() {
   size(500, 500);
@@ -9,9 +14,14 @@ void setup() {
   
   numViruses = 10;
   
+  //VIRUSES
   viruses = new ArrayList<Virus>();
   spikes = new ArrayList<Spikes>();
   antibodies = new ArrayList<Antibodies>();
+  
+  //ELLIPSE CELLS
+  testNucleus = new Nucleus(250, 250, 8);
+  testCell = new EllipseCell(250,250,30,100,0,cellColor1,testNucleus);
   
   for (int i = 0; i < numViruses; i++) {
     // generate a random starting position and velocity for each circle
@@ -40,6 +50,8 @@ void setup() {
 
 void draw() {
   background(255);
+  
+  //draw viruses
   for (int j = 0; j < numViruses; j++) {
     viruses.get(j).display();
     //viruses.get(j).move();
@@ -49,4 +61,7 @@ void draw() {
     antibodies.get(j).rotate_tri();
     antibodies.get(j).display();
   }
+  
+  //draw ellipse cells
+  testCell.display();
 }
