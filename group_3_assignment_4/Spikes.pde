@@ -11,10 +11,8 @@ class Spikes extends Virus {
   }
   
   
-
-  
   void display() {
-    rectMode(CENTER);
+    //rectMode(CENTER);
     float angle = 0;
     float angleIncrement = TWO_PI / n;
     for (int i = 0; i < n; i++) {

@@ -5,6 +5,7 @@ int numViruses;
 
 void setup() {
   size(500, 500);
+  rectMode(CENTER);
   
   numViruses = 10;
   
@@ -28,10 +29,11 @@ void setup() {
     int n = (int)random(5, 8);
     float l = r/n + random(20, 40);
     
+    float angle = random(0.01, 0.05);
+    
     viruses.add(new Virus(pos, r, vbar, c)); 
     spikes.add(new Spikes(pos, r, vbar, c, l, w, n));
-    antibodies.add(new Antibodies(pos, r, vbar, c, l, w, n));
-    
+    antibodies.add(new Antibodies(pos, r, vbar, c, l, w, n, angle));
     
   }
 }
@@ -40,11 +42,11 @@ void draw() {
   background(255);
   for (int j = 0; j < numViruses; j++) {
     viruses.get(j).display();
-    viruses.get(j).move();
-    spikes.get(j).move();
+    //viruses.get(j).move();
+    //spikes.get(j).move();
     spikes.get(j).display();
     antibodies.get(j).move();
-    //antibodies.get(j).rotate_tri();
+    antibodies.get(j).rotate_tri();
     antibodies.get(j).display();
   }
 }
