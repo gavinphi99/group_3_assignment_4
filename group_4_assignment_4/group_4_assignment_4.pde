@@ -70,11 +70,17 @@ void drawViruses() {
 }
 void setupEllipseCells(){
   //ELLIPSE CELLS
+<<<<<<< HEAD
   testEllipseCell = new EllipseCell(250, 250, 30, 100, 0, color(185, 228, 255, 250), new Nucleus(250, 250, 8));
+=======
+  testNucleus = new Nucleus(50, 50, 10);
+  testCell = new EllipseCell(200, 200, 30, 1.5, 0, cellColor1, testNucleus);
+>>>>>>> 021450711575169c8200148e43f9552eb54db28d
 }
 
 void drawEllipseCells() {
   //draw ellipse cells
+<<<<<<< HEAD
   testEllipseCell.display();
 }
 
@@ -91,4 +97,8 @@ void drawRectCells() {
   testRectCell.display();
   testFlagella.display();
   testRectCell.move();
+=======
+  //testCell.sizeChange();
+  testCell.display();
+>>>>>>> 021450711575169c8200148e43f9552eb54db28d
 }
