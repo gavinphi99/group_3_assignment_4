@@ -29,14 +29,14 @@ class EllipseCell extends Cell{
   //draws the cell onscreen
   void display() {
     //draw the nucleus first so it appears under (visible through transparency)
-    
     pushMatrix();
     
   //draw self
     translate(x,y);
+
+    sizeChange();   
     nucleus.display();
 
-    sizeChange();    
     //draw
     //ellipseMode(RADIUS);
     shape(body);

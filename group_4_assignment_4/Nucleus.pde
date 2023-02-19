@@ -1,9 +1,14 @@
 class Nucleus {
   //definable fields
   float radius;
-  PVector speed;
+  //PVector speed;
   float x;
   float y;
+  
+  
+  //rotation
+  float currAngle;
+  float rotSpeed = 0.1;
   
   //non-definable fields
   color standardColor = color(131,22,16);
@@ -15,12 +20,25 @@ class Nucleus {
   
   //draws the nucleus onscreen, called by the cell class
   void display(){
-    ellipseMode(RADIUS);
+    
+    //rotation
+    pushMatrix();
+    rotation();
+
+    //draw properties
+    //ellipseMode(RADIUS);
+    rectMode(CENTER);
     fill(standardColor);
     noStroke();
     
-    ellipse(0,0,radius,radius);
+    rect(0,0,radius,radius);
     
-    ellipseMode(CENTER);
+    popMatrix();
+  }
+  
+  void rotation(){
+    currAngle += rotSpeed;
+    
+    rotate(currAngle);
   }
 }
