@@ -19,7 +19,7 @@ class Nucleus {
     fill(standardColor);
     noStroke();
     
-    ellipse(x,y,radius,radius);
+    ellipse(0,0,radius,radius);
     
     ellipseMode(CENTER);
   }

@@ -23,22 +23,22 @@ class EllipseCell extends Cell{
     ellipseMode(RADIUS);
     noStroke();
     fill(cellColor);
-    body = createShape(ELLIPSE, x, y, radius, radius);
+    body = createShape(ELLIPSE, 0, 0, radius, radius);
   }
   
   //draws the cell onscreen
   void display() {
     //draw the nucleus first so it appears under (visible through transparency)
-    nucleus.display();
     
     pushMatrix();
     
-  //draw itself
-    //apply scale
+  //draw self
+    translate(x,y);
+    nucleus.display();
+
     sizeChange();    
     //draw
-    scale(currScale);
-    ellipseMode(RADIUS);
+    //ellipseMode(RADIUS);
     shape(body);
     
     popMatrix();
