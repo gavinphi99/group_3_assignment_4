@@ -3,7 +3,13 @@ ArrayList<Virus> viruses;
 ArrayList<Spikes> spikes;
 ArrayList<Antibodies> antibodies;
 //ellipse cells declaration
-EllipseCell testEllipseCell;
+color cellColor1 = color(98, 237, 162, 150);
+color cellColor2 = color(195,237,98, 150);
+color cellColor3 = color(98, 138, 237, 150);
+EllipseCell ellipseCell1;
+EllipseCell ellipseCell2;
+EllipseCell ellipseCell3;
+//rect cells declaration
 RectCell firstRectCell, secondRectCell;
 
 
@@ -70,13 +76,16 @@ void drawViruses() {
   }
 }
 void setupEllipseCells(){
-  //ELLIPSE CELLS
-  testEllipseCell = new EllipseCell(250, 250, 30, 100, 0, color(185, 228, 255, 250), new Nucleus(250, 250, 8));
+  ellipseCell1 = new EllipseCell(150, 275, 30, 1.5, 0, cellColor1, new Nucleus(16), 0.005);
+  ellipseCell2 = new EllipseCell(389, 400, 15, 1.4, 0, cellColor2, new Nucleus(8), 0.0025);
+  ellipseCell3 = new EllipseCell(340, 100, 21, 1.3, 0, cellColor3, new Nucleus(20), 0.0025);
 }
 
 void drawEllipseCells() {
   //draw ellipse cells
-  testEllipseCell.display();
+  ellipseCell1.display();
+  ellipseCell2.display();
+  ellipseCell3.display();
 }
 
 void setupRectCells(){

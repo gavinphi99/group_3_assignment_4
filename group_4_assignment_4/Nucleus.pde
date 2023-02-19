@@ -1,7 +1,7 @@
 
 class Nucleus {
   //definable fields
-  float radius;
+  float wid;
   //PVector speed;
   float x;
   float y;
@@ -15,8 +15,8 @@ class Nucleus {
   color standardColor = color(131,22,16);
   
   //constructor
-  Nucleus(float startX, float startY, float r){ //TODO: will have speed added later
-    x = startX; y = startY; radius = r;
+  Nucleus(float w){ //TODO: will have speed added later
+    wid = w;
   }
   
   //draws the nucleus onscreen, called by the cell class
@@ -32,7 +32,7 @@ class Nucleus {
     fill(standardColor);
     noStroke();
     
-    rect(0,0,radius,radius);
+    rect(0,0,wid,wid);
     
     popMatrix();
   }
