@@ -1,18 +1,13 @@
-class EllipseCell {
+class EllipseCell extends Cell{
   
   float radius;
   float maxRadius;
-  float speed; //TODO: will be changed to PVector later
-  color cellColor;
-  Nucleus nucleus;
-    
-  //might not use these
-  float x;
-  float y;
   
   EllipseCell(float startX, float startY, float r, float maxR, float startSpeed, color c, Nucleus n){
     //set all fields' starting values based on parameters
-    x = startX; y = startY; radius = r; maxRadius = maxR; speed = startSpeed; cellColor = c; nucleus = n;
+    super(startX, startY, startSpeed, c, n);
+    radius = r; 
+    maxRadius = maxR;
   }
   
   //draws the cell onscreen
