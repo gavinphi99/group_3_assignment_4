@@ -2,39 +2,53 @@ class RectCell extends Cell {
 
   float maxHeight, maxWidth, rotation;
   boolean hasFlagella, hasNucleus;
+  Flagella flagella;
 
-  RectCell(float startX, float startY, float startSpeed, color c, Nucleus n, float w,
-  float h, float _rotation, boolean _hasFlagella, boolean _hasNucleus) {
+  RectCell(float startX, float startY, float startSpeed, color c, float w, 
+    float h, float _rotation, boolean _hasFlagella) {
     //set all fields' starting values based on parameters
-    super(startX, startY, startSpeed, c, n);
+    super(startX, startY, startSpeed, c);
     maxWidth = w;
     maxHeight = h;
     hasFlagella = _hasFlagella;
-    hasNucleus = _hasNucleus;
-    rotation = _rotation;
-
+    rotation = 0;
+    flagella = new Flagella(startX, startY, startSpeed, 3 * maxWidth, c);
   }
 
   //draws the cell onscreen
   void display() {
+    drawRectCell();
+  }
+
+  void drawRectCell() {
     pushMatrix();
+    translate(x, y);
     rotate(rotation);
     //nucleus.display();
     //draw itself
     rectMode(CENTER);
-    stroke(1);
+    stroke(0);
+    strokeWeight(2);
     fill(cellColor);
-    rect(x, y, maxWidth, maxHeight);
+    rect(0, 0, maxWidth, maxHeight);
+    if(this.hasFlagella){
+      drawFlagella();
+    }
     popMatrix();
   }
 
   void move() {
-    pushMatrix();
-    translate(x, y);
     y = y + speed;
     if (y < -height || y >= height * 2) {
       y = 0;
     }
+  }
+
+  void drawFlagella() {
+    pushMatrix();
+    translate(0, maxHeight / 2);
+    rotate(rotation);
+    flagella.display();
     popMatrix();
   }
 }
