@@ -38,16 +38,16 @@ void setupViruses(int numViruses) {
     float x0 = random(width);
     float y0 = random(height);
     PVector pos = new PVector(x0, y0);
-    float r = random(15, 45);
+    float r = random(5, 10);
     float vx0 = random(-1.25, 1.25);
     float vy0 = random(-1.25, 1.25);
     PVector vbar = new PVector(vx0, vy0);
     color c = color(random(255), random(255), random(255));
 
 
-    float w = random(4.5, 6.25);
+    float w = random(3, 4.5);
     int n = (int)random(5, 8);
-    float l = r/n + random(20, 40);
+    float l = r/n + random(10, 20);
 
     float angle = random(0.01, 0.05);
 

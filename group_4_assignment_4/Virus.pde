@@ -12,18 +12,34 @@ class Virus {
     this.c = c;
   }
   
-  void move() {
-    pos.add(vel);
-
-    if (pos.x < r || pos.x >= width - r) {
-      vel.x *= -1;
-    }
-
-    // Check for collision with top or bottom edge
-    if (pos.y < r || pos.y >= height - r) {
-      vel.y *= -1;
-    }
+void move() {
+  pos.add(vel);
+  
+  if (pos.x < r) {
+    pos.x = width - r;
+  } else if (pos.x >= width - r) {
+    pos.x = r;
   }
+  
+  if (pos.y < r) {
+    pos.y = height - r;
+  } else if (pos.y >= height - r) {
+    pos.y = r;
+  }
+}
+
+  //void move() {
+  //  pos.add(vel);
+    
+  //  if (pos.x < r || pos.x >= width - r) {
+  //    vel.x *= -1;
+  //  }
+
+  //  // Check for collision with top or bottom edge
+  //  if (pos.y < r || pos.y >= height - r) {
+  //    vel.y *= -1;
+  //  }
+  //}
   
   void display() {
     ellipseMode(CENTER);
