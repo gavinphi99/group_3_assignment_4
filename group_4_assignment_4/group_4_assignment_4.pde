@@ -69,11 +69,12 @@ void drawViruses() {
 }
 void setupEllipseCells(){
   //ELLIPSE CELLS
-  testNucleus = new Nucleus(250, 250, 8);
-  testCell = new EllipseCell(250, 250, 30, 100, 0, cellColor1, testNucleus);
+  testNucleus = new Nucleus(0, 0, 8);
+  testCell = new EllipseCell(0, 0, 30, 1.2, 0, cellColor1, testNucleus);
 }
 
 void drawEllipseCells() {
   //draw ellipse cells
+  //testCell.sizeChange();
   testCell.display();
 }

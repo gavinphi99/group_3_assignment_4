@@ -1,13 +1,29 @@
 class EllipseCell extends Cell{
   
   float radius;
-  float maxRadius;
   
-  EllipseCell(float startX, float startY, float r, float maxR, float startSpeed, color c, Nucleus n){
+  //scale
+  float minScale = 1;
+  float maxScale;
+  
+  float sizeChangeRate = 0.01;
+  float currScale;
+  boolean increasing;
+  
+  PShape body;
+  
+  EllipseCell(float startX, float startY, float r, float maxS, float startSpeed, color c, Nucleus n){
     //set all fields' starting values based on parameters
     super(startX, startY, startSpeed, c, n);
-    radius = r; 
-    maxRadius = maxR;
+    radius = r;
+    maxScale = maxS;
+    currScale = 1.1;
+    increasing = true;
+    
+    ellipseMode(RADIUS);
+    noStroke();
+    fill(cellColor);
+    body = createShape(ELLIPSE, x, y, radius, radius);
   }
   
   //draws the cell onscreen
@@ -15,11 +31,46 @@ class EllipseCell extends Cell{
     //draw the nucleus first so it appears under (visible through transparency)
     nucleus.display();
     
-    //draw itself
+    pushMatrix();
+    
+  //draw itself
+    //apply scale
+    sizeChange();    
+    //draw
+    scale(currScale);
     ellipseMode(RADIUS);
-    noStroke();
-    fill(cellColor);
-    ellipse(x, y, radius, radius);
-    ellipseMode(CENTER);
+    shape(body);
+    
+    popMatrix();
+  }
+  
+  //change the size of the cell body
+  void sizeChange(){
+    
+    if (increasing) {
+      if (currScale < maxScale){
+        increasing = true;      }
+      else {
+        increasing = false;
+      }
+    }
+    else {
+      if (currScale > minScale){
+        increasing = false;
+      }
+      else {
+        increasing = true;
+      }
+    }
+    
+    //
+    if (increasing){
+      currScale += sizeChangeRate;
+    }
+    else {
+      currScale -= sizeChangeRate;
+    }
+    
+    scale(currScale);
   }
 }
