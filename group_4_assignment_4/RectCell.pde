@@ -11,8 +11,9 @@ class RectCell extends Cell {
     maxWidth = w;
     maxHeight = h;
     hasFlagella = _hasFlagella;
-    rotation = 0;
-    flagella = new Flagella(startX, startY, startSpeed, 3 * maxWidth, c);
+    rotation = _rotation;
+    flagella = new Flagella(startX, startY, startSpeed, h, rotation, c);
+
   }
 
   //draws the cell onscreen
@@ -22,8 +23,8 @@ class RectCell extends Cell {
 
   void drawRectCell() {
     pushMatrix();
-    translate(x, y);
     rotate(rotation);
+    translate(x, y);
     //nucleus.display();
     //draw itself
     rectMode(CENTER);
@@ -31,7 +32,7 @@ class RectCell extends Cell {
     strokeWeight(2);
     fill(cellColor);
     rect(0, 0, maxWidth, maxHeight);
-    if(this.hasFlagella){
+    if(hasFlagella){
       drawFlagella();
     }
     popMatrix();
@@ -39,14 +40,14 @@ class RectCell extends Cell {
 
   void move() {
     y = y + speed;
-    if (y < -height || y >= height * 2) {
+    if (y < 0 || y >= height * sqrt(3)) {
       y = 0;
     }
   }
 
   void drawFlagella() {
     pushMatrix();
-    translate(0, maxHeight / 2);
+    translate(0, -maxHeight / 2);
     rotate(rotation);
     flagella.display();
     popMatrix();

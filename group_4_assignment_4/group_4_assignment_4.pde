@@ -5,7 +5,7 @@ ArrayList<Antibodies> antibodies;
 //ellipse cells declaration
 EllipseCell testEllipseCell;
 RectCell testRectCell;
-Flagella testFlagella;
+
 
 void setup() {
   size(500, 500);
@@ -16,6 +16,7 @@ void setup() {
   setupEllipseCells();
   
   setupRectCells();
+
 }
 
 void draw() {
@@ -80,7 +81,7 @@ void drawEllipseCells() {
 
 void setupRectCells(){
   //ELLIPSE CELLS
-  testRectCell = new RectCell(width / 2, height / 2, 1, color(185, 228, 255, 250),  30, 100, random(2 *PI), true);
+  testRectCell = new RectCell(0, 0, 3, color(#500000),  30, 100, 7 * PI / 4, true);
   
   
 }
