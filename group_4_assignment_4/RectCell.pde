@@ -16,11 +16,12 @@ class RectCell extends Cell {
 
   }
 
-  //draws the cell onscreen
+  //draws the cell onscreen, calls display in seperate method for future potential addtions
   void display() {
     drawRectCell();
   }
-
+  
+  //actual drawing of cell w/ flagella if hasFlagella
   void drawRectCell() {
     pushMatrix();
     rotate(rotation);
@@ -37,14 +38,17 @@ class RectCell extends Cell {
     }
     popMatrix();
   }
-
+  
+  //moves the origin along the y axis (along long end of rectangular bacteria
   void move() {
     y = y + speed;
     if (y < 0 || y >= height * sqrt(3)) {
       y = 0;
     }
   }
-
+  
+  //draws flagella based on the matrix established and shifted to attach to the back middle of the bacteria
+  //  sub animation hierarchy within movement of the bacteria
   void drawFlagella() {
     pushMatrix();
     translate(0, -maxHeight / 2);

@@ -4,7 +4,7 @@ ArrayList<Spikes> spikes;
 ArrayList<Antibodies> antibodies;
 //ellipse cells declaration
 EllipseCell testEllipseCell;
-RectCell testRectCell;
+RectCell firstRectCell, secondRectCell;
 
 
 void setup() {
@@ -80,14 +80,16 @@ void drawEllipseCells() {
 }
 
 void setupRectCells(){
-  //ELLIPSE CELLS
-  testRectCell = new RectCell(0, 0, 3, color(#500000),  30, 100, 7 * PI / 4, true);
-  
+  //RECT CELLS
+  firstRectCell = new RectCell(0, 0, 2, color(#500000),  40, 133, 7 * PI / 4, true);
+  secondRectCell = new RectCell(0, 0, 3, color(#bf5700),  30, 100, 7 * PI / 4 , true);
   
 }
 
 void drawRectCells() {
-  //draw ellipse cells
-  testRectCell.display();
-  testRectCell.move();
+  //draw rect cells
+  firstRectCell.display();
+  firstRectCell.move();
+  secondRectCell.display();
+  secondRectCell.move();
 }
