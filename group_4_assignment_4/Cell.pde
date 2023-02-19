@@ -1,4 +1,4 @@
-class Cell{
+class Cell {
   
   float radius;
   float maxRadius;
@@ -10,7 +10,7 @@ class Cell{
   float x;
   float y;
   
-  Cell(float startX, float startY, float startSpeed, color c, Nucleus n){
+  Cell(float startX, float startY, float startSpeed, color c, Nucleus n) {
     //set all fields' starting values based on parameters
     x = startX; 
     y = startY; 

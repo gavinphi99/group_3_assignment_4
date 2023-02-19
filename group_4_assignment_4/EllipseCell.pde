@@ -1,9 +1,9 @@
-class EllipseCell extends Cell{
+class EllipseCell extends Cell {
   
   float radius;
   float maxRadius;
   
-  EllipseCell(float startX, float startY, float r, float maxR, float startSpeed, color c, Nucleus n){
+  EllipseCell(float startX, float startY, float r, float maxR, float startSpeed, color c, Nucleus n) {
     //set all fields' starting values based on parameters
     super(startX, startY, startSpeed, c, n);
     radius = r; 

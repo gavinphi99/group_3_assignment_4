@@ -3,9 +3,9 @@ ArrayList<Virus> viruses;
 ArrayList<Spikes> spikes;
 ArrayList<Antibodies> antibodies;
 //ellipse cells declaration
-EllipseCell testCell;
-Nucleus testNucleus;
-color cellColor1 = color(185, 228, 255, 150);
+EllipseCell testEllipseCell;
+RectCell testRectCell;
+Flagella testFlagella;
 
 void setup() {
   size(500, 500);
@@ -15,13 +15,14 @@ void setup() {
   
   setupEllipseCells();
   
-
+  setupRectCells();
 }
 
 void draw() {
   background(255);
   drawViruses();
   drawEllipseCells();
+  drawRectCells();
 }
 
 
@@ -69,11 +70,25 @@ void drawViruses() {
 }
 void setupEllipseCells(){
   //ELLIPSE CELLS
-  testNucleus = new Nucleus(250, 250, 8);
-  testCell = new EllipseCell(250, 250, 30, 100, 0, cellColor1, testNucleus);
+  testEllipseCell = new EllipseCell(250, 250, 30, 100, 0, color(185, 228, 255, 250), new Nucleus(250, 250, 8));
 }
 
 void drawEllipseCells() {
   //draw ellipse cells
-  testCell.display();
+  testEllipseCell.display();
+}
+
+void setupRectCells(){
+  //ELLIPSE CELLS
+  testRectCell = new RectCell(100, 0, 1, color(185, 228, 255, 250) 
+  , new Nucleus(350, 350, 8),  30, 100, random(2 *PI), true, true);
+  testFlagella = new Flagella(width / 2, height / 4, 20, 0.02, 100, 0, color(185, 228, 255, 250));
+  
+}
+
+void drawRectCells() {
+  //draw ellipse cells
+  testRectCell.display();
+  testFlagella.display();
+  testRectCell.move();
 }
