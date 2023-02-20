@@ -1,0 +1,133 @@
+﻿Intended Animation Summary
+
+
+The goal for the animation was to create what looked like a microscope view of a variety of different microorganisms in water, all animating in different ways. Sound was created by Leo.
+
+
+SOUND:
+Recorded by Leo using https://online-voice-recorder.com/
+Code from processing website was used and the sound package MUST be downloaded
+
+
+Included classes
+
+
+group_4_assignment_4
+* Created by everyone collaboratively
+* Base class that animates the scene
+
+
+Cell
+* Created by Leo
+* Parent class of EllipseCell and RectCell
+* Contains barebones information about what any cell would have like color and speed and a radius
+* No classes, just a constructor
+
+
+________________
+
+
+
+
+EllipseCell
+* Created by Ethan
+* Extends from the “Cell” parent class
+* Main class for the transparent cells that repeatedly grow and shrink to different sizes.
+* Tracks whether it is currently growing or shrinking and whether it has reached its max/minimum scale through a few different variables.
+* Has a field for the “Nucleus” object that is tied to it so that the animation of the nucleus can be tied to that of the entire cell.
+
+
+
+
+Nucleus
+* Created by Ethan
+* Doesn’t extend from another class; exists on its own
+* Tracks its current rotation and rotates each time its “display” method is run using “rotation” method
+
+
+
+
+
+
+
+
+________________
+
+
+
+
+
+
+RectCell
+* Created by Leo
+* Extends Cell class
+* Contains info from Cell with other important information for the flagella
+* Transforms by translation, and makes sure that the flagella it creates is also translated by the same amount
+* Methods
+   * drawRectCell:
+      * Draws the rectangular cell at 0,0, but rotates and translates the origin to give the illusion of movement. If a flagella is desired, drawFlagella is called.
+   * move()
+      * Changes the y value on which the translate is based. The rectCell is always drawn at 0,0, but the origin changes its location in the y direction. Rotation already applied
+   * drawFlagella class
+      * Calls display on the flagella that was already created in the constructor. Ensures that this flagella has the same matrix applied to it as the overall rectCell does.
+
+
+
+
+Flagella
+* Created by Leo
+* Draws a flagella, which was something that was much harder to do than I thought.
+* To give the illusion of movement, the flagella has a sub animation hierarchy. It is scaled by negative 1 and rotated by a certain amount. This means that, in reality, the flagella is flipping back and forth, rather than wagging based on a transition from sin to negative sin
+* Methods
+   * The generateOddNumbers method creates odd numbers between two set ends. This is important because the flagella frequency had to be an odd multiple of pi over the width of the flagella for both ends of the flagella to be in the middle and the illusion of movement to work
+   * FlipFlagella() 
+      * This method was important for the illusion of flagellation by flipping rotating the tail by 180 based on the speed of the organism
+      * Did math based on the number of frames passed to flip the FlipFlagella boolean
+   * display()
+      * Calls drawFlagella()
+      * Put like this in case there were any modifications or tests to be done w drawFlagella
+   * drawFlagella()
+      * Used temporary X and Y values to draw a flagella at a certain point based on the sin function, and to flip it based on the timing and the speed as described in the flipFlagella method
+      * 
+
+
+
+________________
+
+
+
+
+
+
+Virus
+* Created by Phillip
+* This class is the base ellipse shape and movement for Spikes and Antibodies
+* The Constructor takes in a position vector, a radius, a velocity vector, and a color
+* For the move method, the virus will move in the direction of a random velocity vector and then when it hits the side of the canvas, it will teleport to the other side of the screen, intending to act like the movement you would see under a microscope
+
+
+Spikes
+* Created by Phillip
+* This class holds the methods to create the rectangles that are on the outside of the virus base ellipse
+* These rectangles are positioned to be equally spaced around the ellipse and also are rotated inward to the center of the ellipse and are also translated outward to a random length
+
+
+
+
+Antibodies
+* Created by Phillip
+* This class holds the methods for generating the triangular “antibodies” that attack the virus
+* There are the same number of antibodies as there are spikes and they are evenly spaced
+* These antibodies rotate around the already translating virus which is the 2nd tier of my animation hierarchy
+
+
+
+
+________________
+
+
+
+
+Unexpected challenges
+* While planning the Ellipse Cell’s script, I forgot that we would be using the transformation methods, so when I actually implemented them I had to rethink a lot of my code (Ethan).
+* I also had a bit of trouble managing the scale transformation specifically. It took me some time to realize the solution to getting the cell to remain in the same place while changing size was to first translate the origin.
