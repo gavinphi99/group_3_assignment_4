@@ -12,10 +12,16 @@ EllipseCell ellipseCell3;
 //rect cells declaration
 RectCell firstRectCell, secondRectCell;
 
+//sound declaration
+import processing.sound.*;
+SoundFile ambient;
+
 
 void setup() {
   size(500, 500);
   rectMode(CENTER);
+  ambient = new SoundFile(this, "ambient.mp3");
+  ambient.play();
 
   setupViruses(10);
   
